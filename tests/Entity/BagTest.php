@@ -85,8 +85,27 @@ class BagTest extends TestCase
 
         $this->expectErrorMessage('Maximum capacity exceeded');
 
-        for ($i = 0; $i < ($this->bag->getCapacity() + 1); ++$i) {
+        $i = 0;
+        while ($i < ($this->bag->getCapacity() + 1)) {
             $this->bag->addItem($item);
+            $i++;
         }
+    }
+
+    /**
+     * @testdox When the bag is full of items
+     */
+    public function testBagIsFull(): void
+    {
+        $category = new Category('Clothes');
+        $item = new Item('Leather', $category);
+
+        $i = 0;
+        while ($i < $this->bag->getCapacity()) {
+            $this->bag->addItem($item);
+            $i++;
+        }
+
+        $this->assertTrue($this->bag->isFull());
     }
 }

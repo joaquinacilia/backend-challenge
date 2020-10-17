@@ -44,7 +44,7 @@ class BackpackTest extends TestCase
     }
 
     /**
-     * * @testdox Cannot exceed maximum capacity of the backpack
+     * @testdox Cannot exceed maximum capacity of the backpack
      */
     public function testBackpackMaxCapacity(): void
     {
@@ -53,8 +53,27 @@ class BackpackTest extends TestCase
 
         $this->expectErrorMessage('Maximum capacity exceeded');
 
-        for ($i = 0; $i < ($this->backpack->getCapacity() + 1); $i++) {
+        $i = 0;
+        while ($i < ($this->backpack->getCapacity() + 1)) {
             $this->backpack->addItem($item);
+            $i++;
         }
+    }
+
+    /**
+     * @testdox When the backpack is full of items
+     */
+    public function testBackpackIsFull(): void
+    {
+        $category = new Category('Clothes');
+        $item = new Item('Leather', $category);
+
+        $i = 0;
+        while ($i < $this->backpack->getCapacity()) {
+            $this->backpack->addItem($item);
+            $i++;
+        }
+
+        $this->assertTrue($this->backpack->isFull());
     }
 }
