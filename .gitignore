@@ -1,0 +1,13 @@
+coverage
+vendor
+
+phpunit.xml
+composer.lock
+
+.idea
+.DS_Store
+.phpunit.result.cache
+.php_cs.cache
+
+/.php_cs
+/docker/.env

@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    php:
+        container_name: kata-php
+        image: kata-php
+        build: ./php
+        volumes:
+            - ../:/home:cached
+        network_mode: bridge
