@@ -32,6 +32,13 @@ docker exec -it kata-php bash
 ./vendor/bin/phpunit
 ```
 
+## Execute code coverage of the tests (view in console)
+
+```
+docker exec -it kata-php bash
+./vendor/bin/phpunit --coverage-text
+```
+
 ## Execute PHPStan
 
 ```
