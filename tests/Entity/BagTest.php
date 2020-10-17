@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Habitissimo\Kata\Entity\Item;
 use Habitissimo\Kata\Entity\Bag;
 use Habitissimo\Kata\Entity\Category;
+use Habitissimo\Kata\Entity\Util;
 
 /**
  * Class BagTest
@@ -55,7 +56,7 @@ class BagTest extends TestCase
         $this->bag->addItem($item);
 
         $this->assertEquals('Leather', $this->bag->getItems()[0]->getName());
-        $this->assertEquals($item->getCategory()->getName(), $this->bag->getCategory()->getName());
+        $this->assertTrue(Util::checkEqualCategories($item->getCategory(), $this->bag->getCategory()));
     }
 
     /**
@@ -71,7 +72,7 @@ class BagTest extends TestCase
         $this->bag->addItem($item);
 
         $this->assertEquals('Leather', $this->bag->getItems()[0]->getName());
-        $this->assertNotEquals($item->getCategory()->getName(), $this->bag->getCategory()->getName());
+        $this->assertFalse(Util::checkEqualCategories($item->getCategory(), $this->bag->getCategory()));
     }
 
     /**
