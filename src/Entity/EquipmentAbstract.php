@@ -13,7 +13,7 @@ abstract class EquipmentAbstract implements EquipmentInterface
 
     public function __construct(array $items = [])
     {
-        $this->items = $items;
+        $this->setItems($items);
     }
 
     public function setItems(array $items = []): void

@@ -20,7 +20,7 @@ class Organizer
     {
         $this->getAllItems();
         $this->sort();
-        $this->putItemsIntoBags();
+        $this->organizeBags();
         $this->relocateRestItems();
     }
 
@@ -45,18 +45,18 @@ class Organizer
         });
     }
 
-    private function putItemsIntoBags(): void
+    private function organizeBags(): void
     {
         if (!empty($this->backpacker->getBags())) {
             for ($i = 0; $i < count($this->backpacker->getBags()); ++$i) {
                 if (!$this->backpacker->getBags()[$i]->isFull()) {
-                    $this->items = $this->putItemIntoBag($this->backpacker->getBags()[$i]);
+                    $this->items = $this->putItemsIntoBags($this->backpacker->getBags()[$i]);
                 }
             }
         }
     }
 
-    private function putItemIntoBag(Bag $bag): array
+    private function putItemsIntoBags(Bag $bag): array
     {
         $restItems = [];
         for ($i = 0; $i < count($this->items); ++$i) {
