@@ -17,6 +17,11 @@ abstract class EquipmentAbstract implements EquipmentInterface
         $this->items = $items;
     }
 
+    public function setItems(array $items = []): void
+    {
+        $this->items = $items;
+    }
+
     public function getItems(): array
     {
         return $this->items;
