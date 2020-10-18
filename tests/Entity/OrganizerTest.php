@@ -2,16 +2,15 @@
 
 namespace Habitissimo\Kata\Tests\Entity;
 
-use Habitissimo\Kata\Entity\Backpacker;
-use Habitissimo\Kata\Entity\Bag;
-use Habitissimo\Kata\Entity\Category;
-use Habitissimo\Kata\Entity\Item;
-use Habitissimo\Kata\Entity\Organizer;
 use PHPUnit\Framework\TestCase;
+use Habitissimo\Kata\Entity\Bag;
+use Habitissimo\Kata\Entity\Item;
+use Habitissimo\Kata\Entity\Category;
+use Habitissimo\Kata\Entity\Organizer;
+use Habitissimo\Kata\Entity\Backpacker;
 
 /**
- * Class OrganizerTest
- * @package Habitissimo\Kata\Tests\Entity
+ * Class OrganizerTest.
  */
 class OrganizerTest extends TestCase
 {
@@ -21,8 +20,8 @@ class OrganizerTest extends TestCase
     public function testOrganizeItemsInBackpackAndOneBag(): void
     {
         $clothesCategory = new Category('Clothes');
-        $metalsCategory = new Category('Metals');
-        $herbsCategory = new Category('Herbs');
+        $metalsCategory  = new Category('Metals');
+        $herbsCategory   = new Category('Herbs');
 
         $backpacker = new Backpacker();
         $backpacker->takeAnotherItem(new Item('Leather', $clothesCategory));
@@ -62,8 +61,8 @@ class OrganizerTest extends TestCase
     {
         $weaponsCategory = new Category('Weapons');
         $clothesCategory = new Category('Clothes');
-        $metalsCategory = new Category('Metals');
-        $herbsCategory = new Category('Herbs');
+        $metalsCategory  = new Category('Metals');
+        $herbsCategory   = new Category('Herbs');
 
         $backpacker = new Backpacker();
         $backpacker->takeAnotherItem(new Item('Leather', $clothesCategory));
@@ -115,8 +114,8 @@ class OrganizerTest extends TestCase
     {
         $weaponsCategory = new Category('Weapons');
         $clothesCategory = new Category('Clothes');
-        $metalsCategory = new Category('Metals');
-        $herbsCategory = new Category('Herbs');
+        $metalsCategory  = new Category('Metals');
+        $herbsCategory   = new Category('Herbs');
 
         $backpacker = new Backpacker();
         $backpacker->takeAnotherItem(new Item('Leather', $clothesCategory));

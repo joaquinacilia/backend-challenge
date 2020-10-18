@@ -8,8 +8,7 @@ use Habitissimo\Kata\Entity\Backpack;
 use Habitissimo\Kata\Entity\Category;
 
 /**
- * Class BackpackTest
- * @package Habitissimo\Kata\Tests\Entity
+ * Class BackpackTest.
  */
 class BackpackTest extends TestCase
 {
@@ -35,7 +34,7 @@ class BackpackTest extends TestCase
     public function testAddItemIntoBackpack(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->backpack->addItem($item);
 
@@ -49,14 +48,14 @@ class BackpackTest extends TestCase
     public function testBackpackMaxCapacity(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->expectErrorMessage('Maximum capacity exceeded');
 
         $i = 0;
         while ($i < ($this->backpack->getCapacity() + 1)) {
             $this->backpack->addItem($item);
-            $i++;
+            ++$i;
         }
     }
 
@@ -66,12 +65,12 @@ class BackpackTest extends TestCase
     public function testBackpackIsFull(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $i = 0;
         while ($i < $this->backpack->getCapacity()) {
             $this->backpack->addItem($item);
-            $i++;
+            ++$i;
         }
 
         $this->assertTrue($this->backpack->isFull());

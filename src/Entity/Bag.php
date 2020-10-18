@@ -1,11 +1,9 @@
 <?php
 
 namespace Habitissimo\Kata\Entity;
-use Exception;
 
 /**
- * Class Bag
- * @package Habitissimo\Kata\Entity
+ * Class Bag.
  */
 class Bag extends EquipmentAbstract
 {

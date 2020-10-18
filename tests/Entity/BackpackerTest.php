@@ -10,8 +10,7 @@ use Habitissimo\Kata\Entity\Category;
 use Habitissimo\Kata\Entity\Backpacker;
 
 /**
- * Class BackpackerTest
- * @package Habitissimo\Kata\Tests\Entity
+ * Class BackpackerTest.
  */
 class BackpackerTest extends TestCase
 {
@@ -39,7 +38,7 @@ class BackpackerTest extends TestCase
     public function testAddBag(): void
     {
         $category = new Category('Clothes');
-        $bag = new Bag([], $category);
+        $bag      = new Bag([], $category);
         $this->backpacker->addBag($bag);
 
         $this->assertEquals(1, count($this->backpacker->getBags()));
@@ -52,7 +51,7 @@ class BackpackerTest extends TestCase
     public function testTakeOneItemIntoEmptyBackpack(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->backpacker->takeAnotherItem($item);
 
@@ -67,8 +66,8 @@ class BackpackerTest extends TestCase
     public function testTakeOneItemIntoNextAvailableBagWhenBackpackIsFull(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
-        $limit = $this->backpacker->getBackpack()->getCapacity() + 1;
+        $item     = new Item('Leather', $category);
+        $limit    = $this->backpacker->getBackpack()->getCapacity() + 1;
 
         $i = 0;
         while ($i < $limit) {
@@ -76,7 +75,7 @@ class BackpackerTest extends TestCase
                 $this->backpacker->addBag(new Bag());
             }
             $this->backpacker->takeAnotherItem($item);
-            $i++;
+            ++$i;
         }
 
         $this->assertTrue($this->backpacker->getBackpack()->isFull());
@@ -93,8 +92,8 @@ class BackpackerTest extends TestCase
     public function testTakeOneItemIntoNextAvailableBagWhenBackpackIsFullAndBagIsFull(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
-        $limit = $this->backpacker->getBackpack()->getCapacity() + Bag::MAX_CAPACITY + 1;
+        $item     = new Item('Leather', $category);
+        $limit    = $this->backpacker->getBackpack()->getCapacity() + Bag::MAX_CAPACITY + 1;
 
         $i = 0;
         while ($i < $limit) {
@@ -103,7 +102,7 @@ class BackpackerTest extends TestCase
                 $this->backpacker->addBag(new Bag());
             }
             $this->backpacker->takeAnotherItem($item);
-            $i++;
+            ++$i;
         }
 
         $this->assertTrue($this->backpacker->getBackpack()->isFull());
@@ -122,25 +121,25 @@ class BackpackerTest extends TestCase
     public function testMaxNumberOfBags(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->expectErrorMessage('Maximum number of bags exceeded');
 
         $i = 0;
         while ($i < $this->backpacker->getBackpack()->getCapacity()) {
             $this->backpacker->takeAnotherItem($item);
-            $i++;
+            ++$i;
         }
 
         $i = 0;
         while ($i < ($this->backpacker->getMaxBags() + 1)) {
             $this->backpacker->addBag(new Bag());
-            $i++;
+            ++$i;
 
             $j = 0;
             while ($j < Bag::MAX_CAPACITY) {
                 $this->backpacker->takeAnotherItem($item);
-                $j++;
+                ++$j;
             }
         }
     }

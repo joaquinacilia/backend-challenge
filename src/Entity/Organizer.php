@@ -3,8 +3,7 @@
 namespace Habitissimo\Kata\Entity;
 
 /**
- * Class Organizer
- * @package Habitissimo\Kata\Entity
+ * Class Organizer.
  */
 class Organizer
 {
@@ -14,7 +13,7 @@ class Organizer
     public function __construct(Backpacker $backpacker)
     {
         $this->backpacker = $backpacker;
-        $this->items = [];
+        $this->items      = [];
     }
 
     public function organize(): void
@@ -30,8 +29,8 @@ class Organizer
         $this->items = $this->backpacker->getBackpack()->getItems();
         $this->backpacker->getBackpack()->setItems();
         if (!empty($this->backpacker->getBags())) {
-            for ($i = 0; $i < count($this->backpacker->getBags()); $i++) {
-                for ($j = 0; $j < count($this->backpacker->getBags()[$i]->getItems()); $j++) {
+            for ($i = 0; $i < count($this->backpacker->getBags()); ++$i) {
+                for ($j = 0; $j < count($this->backpacker->getBags()[$i]->getItems()); ++$j) {
                     array_push($this->items, $this->backpacker->getBags()[$i]->getItems()[$j]);
                 }
                 $this->backpacker->getBags()[$i]->setItems();
@@ -49,7 +48,7 @@ class Organizer
     private function putItemsIntoBags(): void
     {
         if (!empty($this->backpacker->getBags())) {
-            for ($i = 0; $i < count($this->backpacker->getBags()); $i++) {
+            for ($i = 0; $i < count($this->backpacker->getBags()); ++$i) {
                 if (!$this->backpacker->getBags()[$i]->isFull()) {
                     $this->items = $this->putItemIntoBag($this->backpacker->getBags()[$i]);
                 }
@@ -60,7 +59,7 @@ class Organizer
     private function putItemIntoBag(Bag $bag): array
     {
         $restItems = [];
-        for ($i = 0; $i < count($this->items); $i++) {
+        for ($i = 0; $i < count($this->items); ++$i) {
             if (Util::checkEqualCategories($this->items[$i]->getCategory(), $bag->getCategory()) &&
                 !$bag->isFull()) {
                 $bag->addItem($this->items[$i]);
@@ -74,7 +73,7 @@ class Organizer
 
     private function relocateRestItems(): void
     {
-        for ($i = 0; $i < count($this->items); $i++) {
+        for ($i = 0; $i < count($this->items); ++$i) {
             $this->backpacker->takeAnotherItem($this->items[$i]);
         }
     }

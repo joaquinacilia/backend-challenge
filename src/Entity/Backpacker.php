@@ -5,8 +5,7 @@ namespace Habitissimo\Kata\Entity;
 use Exception;
 
 /**
- * Class Backpacker
- * @package Habitissimo\Kata\Entity
+ * Class Backpacker.
  */
 class Backpacker
 {
@@ -18,7 +17,7 @@ class Backpacker
     public function __construct()
     {
         $this->backpack = new Backpack();
-        $this->bags = [];
+        $this->bags     = [];
     }
 
     public function getBackpack(): Backpack
@@ -55,7 +54,7 @@ class Backpacker
                     $this->bags[$i]->addItem($item);
                     break;
                 }
-                $i++;
+                ++$i;
             }
         }
     }

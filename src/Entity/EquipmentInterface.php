@@ -3,8 +3,7 @@
 namespace Habitissimo\Kata\Entity;
 
 /**
- * Interface EquipmentInterface
- * @package Habitissimo\Kata\Entity
+ * Interface EquipmentInterface.
  */
 interface EquipmentInterface
 {

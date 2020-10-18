@@ -3,8 +3,7 @@
 namespace Habitissimo\Kata\Entity;
 
 /**
- * Class Util
- * @package Habitissimo\Kata\Entity
+ * Class Util.
  */
 class Util
 {

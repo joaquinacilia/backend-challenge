@@ -5,8 +5,7 @@ namespace Habitissimo\Kata\Entity;
 use Exception;
 
 /**
- * Class EquipmentAbstract
- * @package Habitissimo\Kata\Entity
+ * Class EquipmentAbstract.
  */
 abstract class EquipmentAbstract implements EquipmentInterface
 {

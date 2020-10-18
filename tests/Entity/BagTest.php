@@ -3,14 +3,13 @@
 namespace Habitissimo\Kata\Tests\Entity;
 
 use PHPUnit\Framework\TestCase;
-use Habitissimo\Kata\Entity\Item;
 use Habitissimo\Kata\Entity\Bag;
-use Habitissimo\Kata\Entity\Category;
+use Habitissimo\Kata\Entity\Item;
 use Habitissimo\Kata\Entity\Util;
+use Habitissimo\Kata\Entity\Category;
 
 /**
- * Class BagTest
- * @package Habitissimo\Kata\Tests\Entity
+ * Class BagTest.
  */
 class BagTest extends TestCase
 {
@@ -36,7 +35,7 @@ class BagTest extends TestCase
     public function testAddItemIntoBagWithoutCategory(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->bag->addItem($item);
 
@@ -50,7 +49,7 @@ class BagTest extends TestCase
     public function testAddItemIntoBagWithTheSameCategory(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->bag = new Bag([], $category);
         $this->bag->addItem($item);
@@ -65,9 +64,9 @@ class BagTest extends TestCase
     public function testAddItemIntoBagWithDiferentCategory(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
-        $category = new Category('Metal');
+        $category  = new Category('Metal');
         $this->bag = new Bag([], $category);
         $this->bag->addItem($item);
 
@@ -81,14 +80,14 @@ class BagTest extends TestCase
     public function testBagMaxCapacity(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $this->expectErrorMessage('Maximum capacity exceeded');
 
         $i = 0;
         while ($i < ($this->bag->getCapacity() + 1)) {
             $this->bag->addItem($item);
-            $i++;
+            ++$i;
         }
     }
 
@@ -98,12 +97,12 @@ class BagTest extends TestCase
     public function testBagIsFull(): void
     {
         $category = new Category('Clothes');
-        $item = new Item('Leather', $category);
+        $item     = new Item('Leather', $category);
 
         $i = 0;
         while ($i < $this->bag->getCapacity()) {
             $this->bag->addItem($item);
-            $i++;
+            ++$i;
         }
 
         $this->assertTrue($this->bag->isFull());
